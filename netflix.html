@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Clone</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Header Section */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100px;
+            background-color: rgba(20, 20, 20, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 80px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+            height: 40px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 20px;
+        }
+
+        nav ul li a:hover {
+            color: #b3b3b3;
+        }
+
+        /* Banner Section */
+        .banner {
+            height: 100vh;
+            background-image: url('https://assets.nflxext.com/ffe/siteui/vlv3/d5707df0-1e57-4be4-999b-7c891b9dc3af/178a2e42-4b6f-407b-920d-9e121eb04712/US-en-20230807-popsignuptwoweeks-perspective_alpha_website_large.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .slideshow-container {
+            position: absolute;
+            bottom: 250px;
+            left: 48%;
+            transform: translateX(-50%);
+            width: 50%;
+            border-radius: 25px;
+            overflow: hidden;
+            height: 340px;
+        }
+
+        .slides {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transition: opacity 0.3s ease;
+        }
+
+        .dimmed {
+            opacity: 0.5;
+        }
+
+        .banner-content {
+            position: absolute;
+            bottom: 100px;
+            left: 50px;
+        }
+
+        .banner-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 60px;
+        }
+
+        .banner-content p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        /* Movie Rows */
+        .movie-row {
+            margin-top: -130px;
+            padding: 0 50px;
+        }
+
+        .movie-row h2 {
+            margin: 20px 0;
+        }
+
+        .movie-row-posters {
+            display: flex;
+            overflow-y: hidden;
+            overflow-x: scroll;
+            padding: 20px 0;
+        }
+
+        .movie-row-posters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .movie-poster {
+            max-height: 200px;
+            object-fit: contain;
+            margin-right: 10px;
+            transition: transform 450ms;
+            cursor: pointer;
+        }
+
+        .movie-poster:hover {
+            transform: scale(1.08);
+        }
+
+        .movie-poster-large {
+            max-height: 300px;
+        }
+
+        /* Video Player */
+        #videoPlayer {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: auto;
+            z-index: 2000;
+        }
+
+        #videoPlayer video {
+            width: 100%;
+        }
+
+        #closePlayer {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">TV Shows</a></li>
+                <li><a href="netflix1.html">Movies</a></li>
+                <li><a href="netflix login.html">Sign Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Banner Section -->
+    <section class="banner">
+        <!-- Slideshow -->
+        <div class="slideshow-container">
+            <img class="slides" src="https://m.media-amazon.com/images/S/pv-target-images/3f2e7df81fcc3b147bfe5c925450f6d54b3e3a87ff050f51a360d75dfaa4610b._SX1080_FMjpg_.jpg" alt="Slide 1">
+            <img class="slides" src="https://nofilmschool.com/media-library/rrr-movie-review-1648825470847-1648825479894.jpg?id=34053094&width=1200&height=600&coordinates=0%2C0%2C0%2C102" alt="Slide 2">
+            <img class="slides" src="https://www.milesweb.in/blog/wp-content/uploads/2021/09/10-insightful-Business-Growth-Learnings-From-Money-Heist.jpg" alt="Slide 3">
+        </div>
+
+        <div class="banner-content">
+            <h3>Watch your favorite shows and movies on Netflix for Free</h3>
+        </div>
+    </section>
+
+    <!-- Movie Rows -->
+    <section class="movie-row">
+        <h2>Trending Now</h2>
+        <div class="movie-row-posters" >
+            <img class="movie-poster" src="https://images.news18.com/ibnlive/uploads/2024/06/kalki-2898-ad-movie-first-review-2024-06-74247ab144a1de861d9e034bf27aa133.jpg" alt="Movie 1" data-video="C:\xampp\htdocs\xamp\bgvideo.mp4">
+            <img class="movie-poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGOKPIC4VmQ8RJ-V7iQ3Kc3jS5lCC0Bf8ZZw&s" height="200" width="300" alt="Movie 2" data-video="C:\\Users\\lokes\\Videos\\@CS_Files -Raayan (2024) 1080p HQ AMZN WEB-DL x265 [Telugu (.mkv">
+            <img class="movie-poster" src="https://bloodybrilliant.in/wp-content/webpc-passthru.php?src=https://bloodybrilliant.in/wp-content/uploads/2020/07/Tummbadd.jpg&nocache=1" alt="Movie 3" data-video="C:\\Users\\lokes\\Videos\\Tumbbad_2018_720p_AMZN_WEB_DL_x264_Hindi_+_Telugu_+_Tamil_DD+5_1.mkv">
+            <img class="movie-poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSASabpfNepWKQtqKa2-81l1pw1ZXmdnNx6sw&s" height="200px" alt="Movie 4" data-video="C:\\Users\\lokes\\Videos\\Ee-Nagaraniki-Emaindi-2018.mp4">
+            <img class="movie-poster" src="https://images.news18.com/ibnlive/uploads/2024/01/untitled-design-68-2024-01-8333f50642c33941e9e30d6e8dc07e6c.jpg" height="200px" alt="Movie 5" data-video="C:\\Users\\lokes\\Videos\\www.5MovieRulz.red - Salaar Part 1 - Ceasefire (2023) 1080p Telugu HQ WEB-DL - AVC - (DD+5.1 - 640kbps & AAC) - 3.8GB - ESub.mkv">
+            <img class="movie-poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7AUQ1ap545wJq1Op_9GPLFAV15boesLoyZA&s">
+        </div>
+    </section>
+
+    <section class="movie-row">
+        <h2><br><br><br><br><br>Top Rated</h2>
+        <div class="movie-row-posters">
+            <img class="movie-poster movie-poster-large" src="https://m.media-amazon.com/images/M/MV5BNjE5NTMwMzItYjExNS00NzJjLWJlM2ItN2ZjZDU0NjE0NjZiXkEyXkFqcGc@._V1_.jpg" alt="Movie 6" data-video="video6.mp4">
+            <img class="movie-poster movie-poster-large" src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/hridayam-et00317916-18-11-2021-07-42-12.jpg" alt="Movie 7" data-video="video7.mp4">
+            <img class="movie-poster movie-poster-large" src="https://assets-in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/khaleja-et00005145-28-06-2021-07-35-21.jpg" alt="Movie 8" data-video="video8.mp4">
+            <img class="movie-poster movie-poster-large" src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/committee-kurrollu-et00401906-1722407341.jpg" alt="Movie 9" data-video="video9.mp4">
+            <img class="movie-poster movie-poster-large" src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/aay-telugu-et00407020-1722668061.jpg" alt="Movie 10" data-video="video10.mp4">
+            <img class="movie-poster movie-poster-large" src="https://miro.medium.com/v2/resize:fit:481/1*8Fn-i5_1AhiWWvQFzohgoA.png" alt="Movie 10" data-video="video10.mp4">
+            <img class="movie-poster" src="https://images.news18.com/ibnlive/uploads/2024/01/untitled-design-68-2024-01-8333f50642c33941e9e30d6e8dc07e6c.jpg" height="200px" alt="Movie 5" data-video="C:\\Users\\lokes\\Videos\\www.5MovieRulz.red - Salaar Part 1 - Ceasefire (2023) 1080p Telugu HQ WEB-DL - AVC - (DD+5.1 - 640kbps & AAC) - 3.8GB - ESub.mkv">
+        </div>
+    </section>
+
+    <!-- Video Player -->
+    <div id="videoPlayer">
+        <video controls id="videoElement"></video>
+        <button id="closePlayer">Close</button>
+    </div>
+
+    <script>
+        // Slideshow functionality
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slides');
+
+        function showSlides() {
+            slides.forEach(slide => {
+                slide.style.display = 'none';
+                slide.classList.remove('dimmed');
+            });
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1; }
+            slides[slideIndex - 1].style.display = 'block';
+            slides[slideIndex - 1].classList.remove('dimmed');
+
+            // Dim the other slides
+            slides.forEach((slide, index) => {
+                if (index !== slideIndex - 1) {
+                    slide.classList.add('dimmed');
+                }
+            });
+
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+
+        showSlides(); // Start the slideshow
+
+        // Get references to video player and close button
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoElement = document.getElementById('videoElement');
+        const closePlayer = document.getElementById('closePlayer');
+
+        // Add event listener to each movie poster
+        const posters = document.querySelectorAll('.movie-poster');
+        posters.forEach(poster => {
+            poster.addEventListener('click', function () {
+                const videoSource = poster.getAttribute('data-video');
+                videoElement.src = videoSource;
+                videoPlayer.style.display = 'block';
+                videoElement.play();
+            });
+        });
+
+        // Close video player
+        closePlayer.addEventListener('click', function () {
+            videoPlayer.style.display = 'none';
+            videoElement.pause();
+        });
+    </script>
+</body>
+
+</html>

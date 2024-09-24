@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Movie List</title>
+    <style>
+        body {
+            
+            font-family: Arial, sans-serif;
+            background-color: #141414;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 100px;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .logo img {
+            height: 80px;
+        }
+        h2 {
+            color: #e50914;
+            margin: 0;
+        }
+        .movies-list-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-top: 10px; /* Space below the logo */
+        }
+        main {
+            padding-top: 120px; /* Adjust for header height */
+        }
+        .movie-row {
+            margin: 20px 0;
+        }
+        h2 {
+            border-bottom: 2px solid #e50914;
+            padding-bottom: 10px;
+        }
+        .movie-row-posters {
+            display: flex;
+            overflow-x: auto;
+            padding: 20px 0;
+            width: 100%; /* Full width */
+        }
+        .movie-poster {
+            width: 100%; /* Take full width */
+            max-width: 200px; /* Limit max width */
+            height: 225px; /* Keep the same height */
+            object-fit: cover; /* Ensure images cover the area */
+            margin-right: 10px;
+            transition: transform 450ms;
+            cursor: pointer;
+        }
+        .movie-poster:last-child {
+            margin-right: 0; /* Remove margin for the last poster */
+        }
+        .movie-poster:hover {
+            transform: scale(1.08);
+        }
+        #videoPlayer {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: auto;
+            z-index: 2000;
+        }
+        #videoPlayer video {
+            width: 100%;
+        }
+        #closePlayer {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #e50914;
+            color: #fff;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
+        </div>
+    </header>
+    <main>
+        <section class="movies-list-title">
+            <h2>Movies List</h2>
+        </section>
+        <section class="movie-row">
+            <h2>Comedy 😂</h2>
+            <div class="movie-row-posters">
+                <img class="movie-poster" src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/aay-telugu-et00407020-1722668061.jpg" alt="Movie 1">
+                <img class="movie-poster" src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/committee-kurrollu-et00401906-1722407341.jpg" alt="Movie 2">
+                <img class="movie-poster" src="https://hips.hearstapps.com/hmg-prod/images/comedy-movies-netflix-the-spy-next-door-1666972725.jpeg" alt="Movie 3">
+                <img class="movie-poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSASabpfNepWKQtqKa2-81l1pw1ZXmdnNx6sw&s" alt="Movie 4">
+                <img class="movie-poster" src="https://sportshub.cbsistatic.com/i/2021/12/10/c3764821-7369-4cb6-a640-ba03e53b2ca5/en-us-mixtape-main-vertical-27x40-rgb-pre.jpg?auto=webp&width=1500&height=2222&crop=0.675:1,smart" alt="Movie 5">
+                <img class="movie-poster" src="https://static-koimoi.akamaized.net/wp-content/new-galleries/2020/12/the-interview-to-the-hangover-5-best-comedy-movies-on-netflix-003.jpg" alt="Movie 5">
+                <img class="movie-poster" src="https://assets-in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/khaleja-et00005145-28-06-2021-07-35-21.jpg" alt="Movie 5">
+            </div>
+        </section>
+    
+        <section class="movie-row">
+            <h2>Romantic ❤️</h2>
+            <div class="movie-row-posters">
+                <img class="movie-poster" src="https://hips.hearstapps.com/hmg-prod/images/best-romance-movies-on-netflix-the-royal-treatment-1651706243.jpg" alt="Movie 6">
+                <img class="movie-poster" src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/hridayam-et00317916-18-11-2021-07-42-12.jpg" alt="Movie 7">
+                <img class="movie-poster" src="https://assets-in.bmscdn.com/iedb/movies/images/extra/vertical_logo/mobile/thumbnail/xxlarge/khaleja-et00005145-28-06-2021-07-35-21.jpg" alt="Movie 8">
+                <img class="movie-poster" src="https://hips.hearstapps.com/hmg-prod/images/a-perfect-pairing-2022-1670279053.png" alt="Movie 9">
+                <img class="movie-poster" src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/aay-telugu-et00407020-1722668061.jpg" alt="Movie 10">
+                <img class="movie-poster" src="https://english.cdn.zeenews.com/sites/default/files/2023/07/26/1249409-weddingseason-film-romance.jpg" alt="Movie 5">
+                <img class="movie-poster" src="https://people.com/thmb/9cLvEcdDMbsE6t_vKvJ85l-8qoE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(413x366:415x368)/Purple-Hearts_3-0124d9a2d60d4e2a9725740f53157265.jpg" alt="Movie 5">
+            </div>
+        </section>
+
+        <section class="movie-row">
+            <h2>Action 🔥</h2>
+            <div class="movie-row-posters">
+                <img class="movie-poster" src="https://images.news18.com/ibnlive/uploads/2024/06/kalki-2898-ad-movie-first-review-2024-06-74247ab144a1de861d9e034bf27aa133.jpg" alt="Get Out">
+                <img class="movie-poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGOKPIC4VmQ8RJ-V7iQ3Kc3jS5lCC0Bf8ZZw&s" alt="A Quiet Place">
+                <img class="movie-poster" src="https://m.media-amazon.com/images/M/MV5BNjE5NTMwMzItYjExNS00NzJjLWJlM2ItN2ZjZDU0NjE0NjZiXkEyXkFqcGc@._V1_.jpg" alt="Hereditary">
+                <img class="movie-poster" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT105YNBY_8FMqXNilfmejAOVEKIMNw9ceCng&s.jpg" alt="Hereditary">
+                <img class="movie-poster" src="https://hips.hearstapps.com/hmg-prod/images/primary-boxcover-hd-800-1200-64ac78ec724d7.jpg" alt="Hereditary">
+                <img class="movie-poster" src="https://images.news18.com/ibnlive/uploads/2024/01/untitled-design-68-2024-01-8333f50642c33941e9e30d6e8dc07e6c.jpg" alt="Movie 5">
+                <img class="movie-poster" src="https://hips.hearstapps.com/hmg-prod/images/best-movies-on-netflix-right-now-the-adam-project-644053ba6404a.jpeg" alt="Movie 5">
+            </div>
+        </section>
+
+        <section class="movie-row">
+            <h2>Horror 👻</h2>
+            <div class="movie-row-posters">
+                <img class="movie-poster" src="https://bloodybrilliant.in/wp-content/uploads/2020/07/Tummbadd.jpg" alt="Superbad">
+                <img class="movie-poster" src="https://english.cdn.zeenews.com/sites/default/files/2023/10/02/1291437-netflix-best-horror-movies.jpg" alt="The Hangover">
+                <img class="movie-poster" src="https://hips.hearstapps.com/hmg-prod/images/best-horror-movies-netflix-blood-red-sky-64399c7c60e2c.jpg" alt="Crazy, Stupid, Love">
+                <img class="movie-poster" src="https://hips.hearstapps.com/hmg-prod/images/best-horror-movies-netflix-fear-street-6439a309210b4.jpg" alt="Movie 5">
+                <img class="movie-poster" src="https://english.cdn.zeenews.com/sites/default/files/2023/09/06/1275948-10-scariest-horror-movies-on-netflix.jpg" alt="Movie 5">
+                <img class="movie-poster" src="https://image.tmdb.org/t/p/original/r01e7wDHHFl2WaXBBzMhGoZg50t.jpg" alt="Movie 5">
+                <img class="movie-poster" src="https://westlakefeatherduster.com/wp-content/uploads/2023/10/IMG_1758.jpg" alt="Movie 5">
+            </div>
+        </section>
+    
+        <!-- Video Player -->
+        <div id="videoPlayer">
+            <video controls id="videoElement"></video>
+            <button id="closePlayer">Close</button>
+        </div>
+    </main>
+    <script>
+        const movieRowPosters = document.querySelectorAll('.movie-row-posters');
+
+        movieRowPosters.forEach(poster => {
+            poster.addEventListener('click', (e) => {
+                if (e.target.tagName === 'IMG') {
+                    const videoSrc = e.target.getAttribute('data-video');
+                    const videoElement = document.getElementById('videoElement');
+                    videoElement.src = videoSrc;
+                    document.getElementById('videoPlayer').style.display = 'block';
+                }
+            });
+        });
+
+        document.getElementById('closePlayer').addEventListener('click', () => {
+            document.getElementById('videoPlayer').style.display = 'none';
+            const videoElement = document.getElementById('videoElement');
+            videoElement.pause();
+            videoElement.src = ''; // Stop the video
+        });
+    </script>
+</body>
+</html>

